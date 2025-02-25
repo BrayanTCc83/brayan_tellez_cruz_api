@@ -1,0 +1,24 @@
+{
+  "name": "brayan_tellez_cruz_api",
+  "version": "1.0.0",
+  "description": "A personal backend for my app",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsx --env-file=.env --watch src/index.ts"
+  },
+  "author": "Brayan Téllez Cruz",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.3",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "@types/pg": "^8.11.11"
+  }
+}
