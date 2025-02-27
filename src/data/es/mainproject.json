@@ -1,0 +1,7 @@
+{
+    "description": [
+        "Lua es una plataforma de cursos interna de la facultad de ingeniería, el objetivo es terminar su despliegue a lo largo de el primer semestre del año 2025, esta construido con JavaScript a modo de SPA, con una implementación propia (realizada por mí) del protocolo MPEG-DASH para el streaming de vídeo adaptativo bajo latencia.",
+        "La plataforma de cursos incluye manejo de sesiones, carrito de compras, manejo de ordens, sección de administrador para crear usuarios, modificar sus permisos, aceptar o rechazar solicitudes para cursos, administrar los usuarios de un curso así como los logs. Sistema de creación de cursos, agregar temas y recursos asociados, perfiles y suplantación de identidad para los administradores, así como consumo de vídeo vía streaming.",
+        "Si bien yo participé principalmente en el desarrollo del frontend y la integración con el backend, también realice funcionalidades y correcciones al backend."
+    ]
+}

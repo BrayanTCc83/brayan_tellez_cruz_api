@@ -1,0 +1,33 @@
+{
+  "credentials": "Ingeniero en Computación | Desarrollador Web",
+  "meta": {
+    "description": "El conocimiento es inútil si no se puede compartir.",
+    "image": "/assets/profile.jpg",
+    "url": "https://brayantellez.com/es"
+  },
+  "content": {
+    "header": "Si tuviera que describirme con pocas palabras sin duda sería:",
+    "description": [
+      {
+        "strong": "Experimental",
+        "text": "soy una persona que siempre busca superarse y adquirir nuevos conocimientos, hacer uso de tecnologías viejas y nuevas, mezclarlas, jugar con ellas."
+      },
+      {
+        "strong": "Perfeccionista",
+        "text": "cuando hago algo me gusta que quede hecho de la mejor manera posible, esto es beneficioso pues me permite asegurar la calidad en los trabajos que realizo, sin embargo, implica dedicar una gran cantidad de tiempo a mis proyectos."
+      },
+      {
+        "strong": "Pragmático",
+        "text": "si algo es mejor para el proyecto o el equipo es preferible usarlo y trabajar con ello, si nos ayuda a llegar a los tiempos o a integrar a nuevos elementos al equipo con facilidad, hagamoslo."
+      },
+      {
+        "strong": "Flexible",
+        "text": "me adapto con gran facilidad a los entornos y tareas que me son asignadas, aún que no tengan que ver con mi enfoque principal, revisar documentación, investigar sobre las tecnologías usadas, modificar una implementación manteniendo las interfaces previas es algo que disfruto hacer debido a lo retador y gratificante que resulta."
+      },
+      {
+        "strong": "Divertido",
+        "text": "fuera del ambiente laboral, soy alguien a quien le gusta disfrutar de su tiempo con actividades variadas, videojuegos, libros, baloncesto, juegos de mesa, contar chistes es algo que hago a menudo y me encanta cantar."
+      }
+    ]
+  }
+}

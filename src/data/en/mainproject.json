@@ -1,0 +1,7 @@
+{
+    "description": [
+        "Lua is a course platform of Enginner Faculty, this project will be open to public on first semester of 2025, the platform was build with JavaScript as an SPA, it use a custom implementation of MPEG DASH protocol to stream video with latency adaptability.",
+        "The platform includes courses, session management, shop cart, orders, administrator section to create and update user, acept or reject course requests, and manage the logs. Of course the instructor section to create and edit courses, add themes and resources.",
+        "I work mainly in frontend integration, so on I help to fix bugs in Backend side, and integration of less grade features."
+    ]
+}
