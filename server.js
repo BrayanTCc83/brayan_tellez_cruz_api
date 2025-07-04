@@ -13,7 +13,7 @@ const app = express();
 const subscriptionsPath = path.join(__dirname, 'subscriptions.json');
 
 app.use(cors({
-  origin: 'http://localhost:4321',
+  origin: process.env.SITE,
   methods: ['GET', 'POST']
 }));
 

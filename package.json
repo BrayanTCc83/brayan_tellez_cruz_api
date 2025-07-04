@@ -1,11 +1,11 @@
 {
   "name": "brayan_tellez_cruz_server",
   "version": "1.0.0",
-  "main": "api/server.js",
+  "main": "api/index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "node --watch --env-file=.env api/server.js",
-    "build": "node api/server.js"
+    "dev": "node --watch --env-file=.env api/index.js",
+    "build": "node api/index.js"
   },
   "keywords": [],
   "author": "",
