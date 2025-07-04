@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="./assets/icon_bpp_colour.ico" type="image/x-icon">
+    <title>Enviar notificaciones</title>
+</head>
+<body>
+    <img src="./assets/Logo Bpp Colored.webp" alt="Logotipo">
+    <h1>Enviar Notificación</h1>
+    <form id="notificationForm">
+        <fieldset>
+            <label for="type">Tipo</label>
+            <select name="type" id="type">
+                <option value="blogpost" selected>Publicación</option>
+                <option value="course">Curso</option>
+                <option value="lesson">Lección</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <label for="lang">Idioma</label>
+            <select name="lang" id="lang">
+                <option value="es" selected>Español</option>
+                <option value="en">English</option>
+                <option value="zh">汉文</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <label for="id">ID</label>
+            <input type="text" name="id" id="id">
+        </fieldset>
+
+        <fieldset>
+            <label for="lesson">Lección (Opcioanl)</label>
+            <input type="text" name="lesson" id="lesson">
+        </fieldset>
+
+        <fieldset>
+            <label for="name">Título</label>
+            <input type="text" name="name" id="name">
+        </fieldset>
+        
+        <fieldset>
+            <label for="body">Mensaje</label>
+            <textarea name="body" id="body"></textarea>
+        </fieldset>
+    </form>
+    <button class="btn" type="submit" form="notificationForm">Notificar</button>
+    <script src="./client.js"></script>
+</body>
+</html>

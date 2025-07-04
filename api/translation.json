@@ -1,0 +1,19 @@
+{
+    "notifications": {
+        "es": {
+            "blogpost": "Nueva Publicación",
+            "course": "Nuevo Curso",
+            "lesson": "Nueva Lección"
+        },
+        "en": {
+            "blogpost": "New Post",
+            "course": "New Course",
+            "lesson": "New Lesson"
+        },
+        "zh": {
+            "blogpost": "新文章",
+            "course": "新课程",
+            "lesson": "新课时"
+        }
+    }
+}
