@@ -118,4 +118,8 @@ app.get("/greet", (req, res) => {
     res.send({ msg: `Welcome ${name}!` });
 });
 
+process.env.SITE?.includes('localhost') ? app.listen(3000, () => {
+  console.log("[Server] Listen on port 3000");
+}) : {}
+
 module.exports = app;
