@@ -32,7 +32,14 @@ async function readSubscriptions() {
     const data = await fsPromises.readFile(subscriptionsPath, 'utf-8');
     return JSON.parse(data);
   } catch (err) {
-    return [];
+    if (err.code === 'ENOENT') {
+      await fsPromises.writeFile(subscriptionsPath, '[]', 'utf-8');
+      console.log('[Server] subscriptions.json was created.');
+      return [];
+    }
+
+    console.error('[Server] Error at read subscriptions.json:', err);
+    throw err;
   }
 }
 
