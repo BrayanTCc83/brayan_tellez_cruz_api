@@ -10,7 +10,12 @@ const translate = require('./translation.json');
 
 const app = express();
 
-const subscriptionsPath = path.join(__dirname, 'subscriptions.json');
+let subscriptionsPath = '';
+if(process.env.SITE?.includes('localhost')) {
+  subscriptionsPath = path.join(__dirname, 'subscriptions.json');
+}else {
+  subscriptionsPath = path.join('/tmp', 'subscriptions.json');
+}
 
 app.use(cors({
   origin: process.env.SITE,
