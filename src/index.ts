@@ -5,21 +5,14 @@ import cors from 'cors';
 import path from 'path';
 
 import translate from '../translation.json';
-import NotificationsDatabase, { ISubscriptorStored, SubscriptorSchema } from './firebase/notifications';
+import NotificationsDatabase, { BLOGPOST, COURSE, ISubscriptorStored, LESSON, NotificationSchema, SubscriptorSchema } from './firebase/notifications';
 
 const expressApp = express();
 let notifications = process.env.SITE?.includes('localhost') ? null : new NotificationsDatabase();
 
-let subscriptionsPath = '';
-if(process.env.SITE?.includes('localhost')) {
-  subscriptionsPath = path.join(__dirname, 'subscriptions.json');
-}else {
-  subscriptionsPath = path.join('/tmp', 'subscriptions.json');
-}
-
 expressApp.use(cors({
   origin: process.env.SITE,
-  methods: ['GET', 'POST']
+  methods: ['GET', 'POST', 'PATCH']
 }));
 
 expressApp.use(bodyParser.json({}));
@@ -38,7 +31,7 @@ expressApp.post('/api/subscribe', async (req, res) => {
   const subscription = SubscriptorSchema.safeParse(req.body);
   if(!subscription.success) {
     console.warn('[Server] The subscription has no correct data.');
-    res.status(500).json({ message: subscription.error.errors.join(';') });
+    res.status(500).json({ message: subscription.error.errors.map(e => e.message).join(';') });
     return;
   }
   
@@ -59,26 +52,34 @@ expressApp.get('/api/subscriptions', async (req, res) => {
   res.json(currentSubs);
 });
 
-const BLOGPOST = 'blogpost';
-const COURSE = 'course';
-const LESSON = 'lesson';
-
 expressApp.post('/api/notify', async (req, res) => {
   console.log('[Server] POST /api/notify.');
-  const { body, type, lang, name, ...data } = req.body;
+  const notification = NotificationSchema.safeParse(req.body);
 
-  let url = `${process.env.SITE}`;
-  let title = `${(translate.notifications as any)[lang][type]}: ${name}`;
-
-  if (type === BLOGPOST) {
-    url += `/${lang}/blogs/${data.id}`;
-  } else if (type === COURSE) {
-    url += `/${lang}/learn/${data.id}`;
-  } else if (type === LESSON) {
-    url += `/${lang}/learn/${data.id}/${data.lesson}`;
+  if(!notification.success) {
+    console.warn('[Server] The notification cannot be send, there are errors on data.');
+    res.status(500).json({ error: notification.error.errors.map(e => e.message).join(';') });
+    return;
   }
 
-  const payload = JSON.stringify({ title, body, url });
+  let url = `${process.env.SITE}`;
+  let title = `${(translate.notifications as any)[notification.data.lang][notification.data.type]}: ${notification.data.name}`;
+
+  switch(notification.data.type) {
+    case BLOGPOST:
+      url += `/${notification.data.lang}/blogs/${notification.data.id}`;
+      break;
+    case COURSE:
+      url += `/${notification.data.lang}/learn/${notification.data.id}`;
+      break;
+    case LESSON:
+      url += `/${notification.data.lang}/learn/${notification.data.id}/${notification.data.lesson}`;
+      break;
+    default:
+      url += `/${notification.data.lang}`;
+  }
+
+  const payload = JSON.stringify({ title, body: notification.data.body, url });
   const currentSubs = await notifications?.GetSubscriptors() ?? [];
   const toRemove: ISubscriptorStored[] = [];
   const errors: unknown[] = [];

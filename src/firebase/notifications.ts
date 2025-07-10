@@ -32,6 +32,73 @@ export interface ISubscriptorStored extends ISubscriptor {
     id: string
 }
 
+export const BLOGPOST = 'blogpost';
+export const COURSE = 'course';
+export const LESSON = 'lesson';
+export const NEWS = 'news';
+
+export const SPANISH = 'es';
+export const ENGLISH = 'en';
+export const CHINESE = 'zh';
+
+const baseSchema = {
+  body: z.string({
+    invalid_type_error: 'The body must be a string.',
+    required_error: 'The body for notification is required.',
+  }).trim().min(10, {
+    message: 'The minium for body content is 10 chars when trim.',
+  }).max(100, {
+    message: 'The body content cannot excced 100 characters.',
+  }),
+  name: z.string({
+    invalid_type_error: 'The body must be a string.',
+    required_error: 'The body for notification is required.',
+  }).trim().min(5, {
+    message: 'The minium for name for post is 5 chars when trim.',
+  }).max(30, {
+    message: 'The name for post cannot excced 30 characters.',
+  }),
+  lang: z.enum([ SPANISH, ENGLISH, CHINESE ], {
+    invalid_type_error: 'The lang must be a valid string.',
+    required_error: 'The lang is required to send notification.'
+  })
+};
+
+export const NotificationSchema = z.discriminatedUnion('type', [
+  z.object({
+    type: z.literal(LESSON),
+    id: z.string({
+        invalid_type_error: 'The id must be a string.',
+        required_error: 'The id for blog, course, lesson is required.',
+    }).trim(),
+    lesson: z.string({
+      invalid_type_error: 'The lesson id must be a string.',
+      required_error: 'The lesson id is required when type is lesson.',
+    }).trim(),
+    ...baseSchema,
+  }),
+  z.object({
+    type: z.literal(COURSE),
+    id: z.string({
+        invalid_type_error: 'The id must be a string.',
+        required_error: 'The id for blog, course, lesson is required.',
+    }).trim(),
+    ...baseSchema,
+  }),
+  z.object({
+    type: z.literal(BLOGPOST),
+    id: z.string({
+        invalid_type_error: 'The id must be a string.',
+        required_error: 'The id for blog, course, lesson is required.',
+    }).trim(),
+    ...baseSchema,
+  }),
+  z.object({
+    type: z.literal(NEWS),
+    ...baseSchema,
+  }),
+]);
+
 export default class NotificationsDatabase {
     static NOTIFICATIONS_COLLECTION = 'notifications';
 
