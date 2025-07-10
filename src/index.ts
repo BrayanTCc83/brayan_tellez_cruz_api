@@ -112,6 +112,10 @@ expressApp.post('/api/notify', async (req, res) => {
   }
 });
 
+expressApp.get('/', (_, res) => {
+  res.sendFile(path.join(path.join(__dirname, '..', 'public'), 'index.html'));
+});
+
 process.env.SITE?.includes('localhost') ? expressApp.listen(3000, () => {
   console.log("[Server] Listen on port 3000");
   try {
