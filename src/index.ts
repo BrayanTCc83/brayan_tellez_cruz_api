@@ -24,7 +24,7 @@ expressApp.use(cors({
 
 expressApp.use(bodyParser.json({}));
 
-expressApp.use(express.static('../public'));
+expressApp.use('/', express.static(path.join(__dirname, '..', 'public')));
 
 WebPush.setVapidDetails(
   `mailto:${process.env.EMAIL}`,

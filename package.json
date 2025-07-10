@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "commonjs",
   "scripts": {
-    "dev": "npx node -r ts-node/register --env-file=.env src/index.ts",
+    "dev": "npx node --watch -r ts-node/register --env-file=.env src/index.ts",
     "build": "tsc",
     "start": "node ./dist/index.js"
   },
