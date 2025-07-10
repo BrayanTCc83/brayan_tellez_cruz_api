@@ -12,8 +12,8 @@ export const SubscriptorSchema = z.object({
         message: 'The subscriptor should have a valid enpoint.'
     }),
     expirationTime: z.number({
-        invalid_type_error: 'The subscriptor expiration time must be a number.'
-    }).optional(),
+        invalid_type_error: 'The subscriptor expiration time must be a number, undefined or null.'
+    }).optional().nullable(),
     keys: z.object({
         p256dh: z.string({
             invalid_type_error: 'The p256h must be an string.',
